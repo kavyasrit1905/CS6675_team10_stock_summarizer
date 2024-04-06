@@ -46,7 +46,7 @@ const CompareLLMSPage = () => {
   return (
     <div className="compare-llms-page">
       <header className="header">
-        <h1>Compare LLMS</h1>
+        <h1>Stock Info Summarizer</h1>
       </header>
       <div className="content">
         <div className="dropdown-container">
@@ -97,7 +97,7 @@ const CompareLLMSPage = () => {
             Competitive Analysis
           </label>
         </div>
-        <button onClick={handleCompareClick}>Compare</button>
+        <button onClick={handleCompareClick}>Analyze</button>
         {isLoading && <div className="loading">Loading...</div>}
         <div className="llms-container">
           <textarea
