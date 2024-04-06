@@ -1,71 +1,97 @@
 /* CompareLLMSPage.css */
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-  }
-  
-  .compare-llms-page {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .header {
-    background-color: #9bd6ff; /* Pastel blue */
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .dropdown-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  select {
-    padding: 10px;
-    margin-right: 10px;
-    font-size: 16px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff; /* Original blue color */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .llms-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align items to the top */
-    width: 100%;
-  }
-  
-  .llm-textbox {
-    width: calc(50% - 10px); /* 50% width minus gap */
-    height: 200px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .gap {
-    width: 20px; /* Width of the gap */
-  }
-  
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.compare-llms-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background-color: #71a5ca; /* Pastel blue */
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Original blue color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px; /* Add space below the button */
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkbox-container label {
+  margin-right: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center; /* Align checkbox and label vertically */
+  margin-left: 5px; /* Adjust text slightly to the right */
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 5px;
+  transform: scale(1.5);
+}
+
+.loading {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.llms-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  width: 100%;
+}
+
+.llm-textbox {
+  width: calc(50% - 10px); /* 50% width minus gap */
+  height: 500px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.gap {
+  width: 20px; /* Width of the gap */
+}

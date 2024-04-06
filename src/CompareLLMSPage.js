@@ -1,7 +1,5 @@
-// CompareLLMSPage.js
-
 import React, { useState, useEffect } from 'react';
-import './CompareLLMSPage.css'; // Import CSS for styling
+import './CompareLLMSPage.css';
 
 const CompareLLMSPage = () => {
   const [llm1, setLlm1] = useState('LLM1');
@@ -9,6 +7,12 @@ const CompareLLMSPage = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showResult, setShowResult] = useState(false);
+  const [checkedOptions, setCheckedOptions] = useState({
+    swotAnalysis: true,
+    beginnerOverview: true,
+    expertOverview: false,
+    competitiveAnalysis: false,
+  });
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
@@ -31,6 +35,14 @@ const CompareLLMSPage = () => {
     }
   }, [showResult]);
 
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    setCheckedOptions({
+      ...checkedOptions,
+      [name]: checked,
+    });
+  };
+
   return (
     <div className="compare-llms-page">
       <header className="header">
@@ -39,15 +51,53 @@ const CompareLLMSPage = () => {
       <div className="content">
         <div className="dropdown-container">
           <select value={selectedOption} onChange={handleOptionChange}>
-            <option value="">Select LLM</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-            <option value="option4">Option 4</option>
-            <option value="option5">Option 5</option>
+            <option value="">Select Stock</option>
+            <option value="option1">NVDA</option>
+            <option value="option2">PODD</option>
+            <option value="option3">CTLT</option>
+            <option value="option4">TSN</option>
+            <option value="option5">HRL</option>
           </select>
-          <button onClick={handleCompareClick}>Compare</button>
         </div>
+        <div className="checkbox-container">
+          <label>
+            <input
+              type="checkbox"
+              name="swotAnalysis"
+              checked={checkedOptions.swotAnalysis}
+              onChange={handleCheckboxChange}
+            />
+            SWOT Analysis
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="beginnerOverview"
+              checked={checkedOptions.beginnerOverview}
+              onChange={handleCheckboxChange}
+            />
+            Beginner Overview
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="expertOverview"
+              checked={checkedOptions.expertOverview}
+              onChange={handleCheckboxChange}
+            />
+            Expert Overview
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="competitiveAnalysis"
+              checked={checkedOptions.competitiveAnalysis}
+              onChange={handleCheckboxChange}
+            />
+            Competitive Analysis
+          </label>
+        </div>
+        <button onClick={handleCompareClick}>Compare</button>
         {isLoading && <div className="loading">Loading...</div>}
         <div className="llms-container">
           <textarea
