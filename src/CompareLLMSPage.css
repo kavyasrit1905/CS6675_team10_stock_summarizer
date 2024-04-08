@@ -13,7 +13,7 @@ body {
 }
 
 .header {
-  background-color: #71a5ca; /* Pastel blue */
+  background-color: #1a2024; /* Pastel blue */
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -94,4 +94,24 @@ button {
 
 .gap {
   width: 20px; /* Width of the gap */
+}
+
+.preferred-response {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.preferred-response button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #007bff; /* Original blue color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.preferred-response button.selected {
+  background-color: #054069; /* Pastel blue */
 }
