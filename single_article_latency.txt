@@ -1,0 +1,155 @@
+Name: NVIDIA
+Date: 2024-04-06
+URL: https://markets.businessinsider.com/news/stocks/nvidia-stock-price-prediction-artificial-intelligence-gpu-earnings-forecast-rally-2024-4
+Content: 3793
+Summarized one news article.
+2.32893443107605
+Date: 2024-03-12
+URL: https://www.forbes.com/sites/investor-hub/article/will-nvidia-stock-split-2024/?sh=69af636a49ec
+Content: 9028
+Summarized one news article.
+3.4288365840911865
+Date: 2024-03-30
+URL: https://finance.yahoo.com/news/nvidia-stock-amd-stock-wont-122230465.html
+Content: 1244
+Summarized one news article.
+1.4793410301208496
+Name: Palantir Technologies
+Date: 2024-03-20
+URL: https://www.msn.com/en-us/money/markets/bad-news-for-palantir-technologies-inc-stock-this-new-risk-has-been-added/ar-BB1iDv4x
+Content: 2919
+Summarized one news article.
+2.5263571739196777
+Date: 2024-03-20
+URL: https://www.tipranks.com/stocks/pltr/risk-factors?utm_source=msn.com&utm_medium=referral#google_vignette
+Content: 1097
+Summarized one news article.
+2.140132188796997
+Date: 2024-03-30
+URL: https://www.msn.com/en-us/money/topstocks/palantir-technologies-inc-pltr-is-attracting-investor-attention-here-is-what-you-should-know/ar-AA1njbJS
+Content: 5527
+Summarized one news article.
+3.919431209564209
+Date: 2024-03-06
+URL: https://www.barrons.com/articles/palantir-stock-army-titan-contract-70a183e5?adobe_mc=MCMID%3D77390209400787617473083191009587576268%7CMCORGID%3DCB68E4BA55144CAA0A4C98A5%2540AdobeOrg%7CTS%3D1713631471
+Content: 288
+Summarized one news article.
+1.7333507537841797
+Date: 2024-04-19
+URL: https://finance.yahoo.com/news/where-palantirs-soaring-stock-10-131500008.html
+Content: 2730
+Summarized one news article.
+3.12605619430542
+Date: 2024-04-19
+URL: https://finance.yahoo.com/news/chatgpt-stock-predictions-10-stocks-105638502.html
+Content: 5707
+Summarized one news article.
+1.9789574146270752
+Name: Duolingo
+Date: 2024-04-18
+URL: https://www.investors.com/news/duolingo-joins-sp-midcap-400/?src=A00220
+Content: 686
+Summarized one news article.
+2.739537477493286
+Date: 2024-04-19
+URL: https://finance.yahoo.com/news/duolingo-duol-surges-5-3-131500483.html
+Content: 2049
+Summarized one news article.
+2.7399892807006836
+Date: 2024-04-18
+URL: https://finance.yahoo.com/m/b2fe4722-2fdf-388d-99c5-e85548297b2f/duolingo-an-ai-play-fluent.html
+Content: 2861
+Summarized one news article.
+3.8538384437561035
+Date: 2024-04-18
+URL: https://finance.yahoo.com/news/why-duolingo-duol-stock-soaring-155213962.html
+Content: 3604
+Summarized one news article.
+3.1705803871154785
+Date: 2024-04-18
+URL: https://finance.yahoo.com/news/duolingo-inc-duol-declines-more-215018066.html
+Content: 2732
+Summarized one news article.
+3.973355531692505
+Date: 2024-04-15
+URL: https://finance.yahoo.com/news/why-duolingo-duol-stock-trading-183304157.html
+Content: 2796
+Summarized one news article.
+3.036808729171753
+Date: 2024-04-11
+URL: https://finance.yahoo.com/news/know-beyond-why-duolingo-inc-130017816.html
+Content: 5328
+Summarized one news article.
+3.828049898147583
+Date: 2024-04-11
+URL: https://finance.yahoo.com/news/duolingo-inc-duol-stock-sinks-214518875.html
+Content: 2737
+Summarized one news article.
+3.9630367755889893
+Date: 2024-04-18
+URL: https://finance.yahoo.com/news/heres-why-duolingo-stock-popped-145737894.html
+Content: 2510
+Summarized one news article.
+2.2428245544433594
+Name: Beyond Meat
+Date: 2024-04-18
+URL: https://finance.yahoo.com/news/beyond-meat-revamped-burger-hits-095903265.html
+Content: 2802
+Summarized one news article.
+2.649017810821533
+Date: 2024-04-15
+URL: https://finance.yahoo.com/news/investors-concerned-beyond-meats-loss-080000246.html
+Content: 2591
+Summarized one news article.
+3.9290764331817627
+Date: 2024-04-02
+URL: https://finance.yahoo.com/news/50-off-high-time-buy-131900875.html
+Content: 2976
+Summarized one news article.
+2.984557628631592
+Date: 2024-04-14
+URL: https://finance.yahoo.com/news/3-reasons-avoid-beyond-meat-134500632.html
+Content: 2733
+Summarized one news article.
+2.7861745357513428
+Date: 2024-04-18
+URL: https://finance.yahoo.com/news/beyond-iv-fourth-generation-beyond-130000321.html
+Content: 2760
+Summarized one news article.
+2.7349629402160645
+Date: 2024-03-07
+URL: https://finance.yahoo.com/news/beyond-meats-biggest-problem-just-121700739.html
+Content: 4464
+Summarized one news article.
+2.8325676918029785
+Date: 2024-03-28
+URL: https://finance.yahoo.com/video/beyond-meat-developed-unassailable-health-211155601.html
+Content: 1033
+Summarized one news article.
+2.0248520374298096
+Date: 2024-03-28
+URL: https://finance.yahoo.com/news/why-beyond-meat-stock-skyrocketed-171347038.html
+Content: 2714
+Summarized one news article.
+4.752923488616943
+Date: 2024-03-28
+URL: https://finance.yahoo.com/news/beyond-meat-unveils-expanded-line-130000009.html
+Content: 2715
+Summarized one news article.
+1.672802209854126
+Name: Advanced Micro Devices AMD
+Date: 2024-04-05
+URL: https://www.msn.com/en-us/money/markets/amd-stock-drops-amid-rate-uncertainty-and-valuation-reassessment-key-level-to-watch/ar-BB1l6dJe
+Content: 1703
+Summarized one news article.
+2.5676991939544678
+Date: 2024-03-23
+URL: https://www.msn.com/en-us/money/other/amd-stock-is-down-15-from-its-52-week-highs-and-here-s-why-you-should-buy-it/ar-BB1kLtUQ
+Content: 1696
+Summarized one news article.
+7.769960403442383
+Date: 2024-04-21
+URL: https://www.msn.com/en-us/money/markets/amd-s-stock-has-been-in-absolute-freefall-but-its-earnings-could-spark-a-chip-sector-rebound/ar-AA1nfKAy
+Content: 1269
+Summarized one news article.
+1.9565389156341553
