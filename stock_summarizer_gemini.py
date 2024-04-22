@@ -11,23 +11,15 @@ genai.configure(api_key = gemini_api_key)
 
 
 model = genai.GenerativeModel('gemini-pro')
+generation_config=genai.GenerationConfig(temperature=1)
 gemini_chat = model.start_chat()
-
-# response = model.generate_content("Do a SWOT analysis based on this " + text1)
-# print('Response: ', response)
-
-# print('\n\n')
-# # Markdown(response.text)
-
-# print('Response: ', response.text)
-
 
 # constants
 tickers_list = ['NVDA', 'AMD']
-articles_data_path = "stock_summary_data.json" # TO DO: upload this to repo
+articles_data_path = "stock_summary_data.json"
 custom_prompt_selector = {
-    "beginner": [True, "Provide stock analysis for a beginner investor including the revenue model, business stand and position in the market. "],
-    "expert": [False, "Provide stock analysis for an expert investor including the risk factor by classifying it among High, low or medium; returns expected in high(greater than 15% per annum), medium(between 5% to 15% per annum) ,low(less than 5% per annum); Suggested investment duration among short term(within months) or longterm(within years). For every every decision you make provide a reason correleating it with stock price and market perfromance. "],
+    "beginner": [False, "Provide stock analysis for a beginner investor including the revenue model, business stand and position in the market. "],
+    "expert": [True, "Provide stock analysis for an expert investor including the risk factor by classifying it among High, low or medium; returns expected in high(greater than 15% per annum), medium(between 5% to 15% per annum) ,low(less than 5% per annum); Suggested investment duration among short term(within months) or longterm(within years). For every every decision you make provide a reason correleating it with stock price and market perfromance. "],
     "SWOT": [True, "Include SWOT analysis, by listing top 3 strengths, weaknesses, Opportunities and Threats. If possible add if the above points are for short term or long term. "],
     "competitive": [True, "Compare the current stock and its potential competitor interms of 'Market size', 'revenue stream', their strengths. For every comparison provide which stock is better. And in the end provide which stock is better based on your overall analysis. "]
 }
@@ -143,23 +135,8 @@ def summarize_all_news_articles(prompt, function):
 
                 # response = model.generate_content("You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information." + prompt + article["content"])
                 response = gemini_chat.send_message("You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information." + prompt + article["content"])
-                print('\n Summarize Article: ', response.text)
-
-
-                # # client = OpenAI()
-                # messages.append({"role":"user","content":article["content"]})
-                # completion = client.chat.completions.create(
-                #   model="gpt-3.5-turbo",
-                #   messages=messages,
-                #   functions = function,
-                #   function_call='auto'
-                # )
-                # print("Summarized one news article.")
-
-                # args = completion.choices[0].message.function_call.arguments
+                # print('\n Summarize Article: ', response.text)
                 try:
-                    # output = json.loads(response)
-                    # summaries.append(output)
                     summaries.append(response.text)
                     print('\n Summarize: ', summaries)
                 except:
@@ -173,48 +150,85 @@ def summarize_all_news_articles(prompt, function):
 
 
 def combine_all_articles(prompt_to_combine, final_prompt, combine_stock_news):
-    print('\n Prompts to combine: ', prompt_to_combine)
-    print('\n Final prompt: ', final_prompt)
-    response = gemini_chat.send_message(str(combine_stock_news) + final_prompt + "Summaries are: " + ''.join(summaries))
-    # response = model.generate_content("You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information." + str(combine_stock_news) + final_prompt)
-    print('AI RESPONSE: ', response.text)
-    # client = OpenAI()
-    # messages=[{"role": "user", "content": prompt_to_combine}]
-    # messages.append({"role":"user","content":f" {summaries}"})
-    # completion = client.chat.completions.create(
-    #     model="gpt-3.5-turbo",
-    #     messages=messages
-    #   )
-    # combined_summary = completion.choices[0].message.content
-
-    # messages=[{"role": "user", "content": final_prompt}]
-    # messages.append({"role":"user","content":f" {combined_summary}"})
-
-    # completion = client.chat.completions.create(
-    #     model="gpt-3.5-turbo",
-    #     messages=messages,
-    #     functions = combine_stock_news,
-    #     function_call='auto'
-    #   )
-
-    # args = completion.choices[0].message.function_call.arguments
-
-    # try:
-    #     output = ast.literal_eval(args)
-    # except:
-    #     output = json.loads(args)
+    print('Prompts to combine: ', prompt_to_combine)
+    print('Final prompt: ', final_prompt)
+    response = gemini_chat.send_message(prompt_to_combine + str(combine_stock_news) + final_prompt + "Summaries are: " + ''.join(summaries))
     return response.text
-    # return {current_ticker:output}
+    # return {current_ticker:json.loads(response.text)}
+
 
 news_articles_prompt = "You are stock news analyzer. Store key content of the news that impacts profit and loss of the company, Strengths, weaknesses, opportunities, threats."
 summaries = summarize_all_news_articles(news_articles_prompt, news_article_summarizer_function)
 
-print('SUMMARIES LIST: \n', summaries)
 
-file_name = "TEST_combined_summaries_expert.json"
+file_name = "gemini_combined_summaries_expert.json"
 prompt_to_combine = "Based on the list of summaries of articles content you have in a json format article, combine and summarize the news articles in a json format. Do not miss any key information that is useful for the user to decide stock performance."
 final_summary = combine_all_articles(prompt_to_combine, final_prompt, combine_stock_news)
 print('\n\nFINAL SUMMARY: \n\n', final_summary)
 with open(file_name, "w") as file:
     file.write(final_summary)
-    # json.dump(final_summary, file)
+
+def test_sentiment_analysis():
+    prompt = "You are a stock news article analyzer. Perform sentiment analysis and output a single a word if its *positive*, *negative* or *neutral*."
+    function = [
+        {
+            "name": "Provide_news_article_sentiment",
+            "description": "Provide the news article sentiment of the stock news in a JSON format.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "sentiment": {
+                        "type": "string",
+                        "description": f"{prompt}"
+                    },
+                }
+            }
+        }
+    ]
+    sentiment_analysis_actual = []
+    sentiment_analysis_predicted = []
+   
+    count = 0
+    
+    for company in data["companies"]:
+      print("Name:", company["name"])
+      content_count = 0
+      for article in company["articles"]:
+          content_count += len(article["content"])
+          sentiment_analysis_actual.append(article["stock_news_sentiment"])
+          response = gemini_chat.send_message(prompt + article["content"])
+          try:
+              output = response.text
+              sentiment_analysis_predicted.append(output.lower().replace("*", ""))
+          except:
+              print ("Incorrect JSON format returned.")
+              time.sleep(10)
+      print(f"Total Content length: {content_count}")
+    return sentiment_analysis_actual, sentiment_analysis_predicted
+ 
+ 
+# sentiment_analysis_actual, sentiment_analysis_predicted = test_sentiment_analysis()
+ 
+# import seaborn as sns
+# from sklearn.metrics import confusion_matrix
+# import matplotlib.pyplot as plt
+
+# # Actual and predicted lists
+# actual = sentiment_analysis_actual
+# predicted = sentiment_analysis_predicted
+# print('\Actual Sentiment: ', actual)
+# print('\Predicted Sentiment: ', predicted)
+ 
+# # Define the categories
+# categories = ["positive", "negative", "neutral"]
+ 
+# # Create confusion matrix
+# cm = confusion_matrix(actual, predicted, labels=categories)
+ 
+# # Display confusion matrix
+# plt.figure(figsize=(8, 6))
+# sns.heatmap(cm, annot=True, fmt="d", xticklabels=categories, yticklabels=categories, cmap="Greens")
+# plt.xlabel("Predicted")
+# plt.ylabel("Actual")
+# plt.title("Confusion Matrix")
+# plt.show()
