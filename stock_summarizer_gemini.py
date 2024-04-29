@@ -88,7 +88,7 @@ combine_stock_news = [
         }
 ]
 
-# TO DO:  fetch from frontend
+# fetch from frontend
 current_ticker = 'NVDA'
 new_custom_prompt_selector = custom_prompt_selector.copy()
 # TO DO: Based on frontend input
@@ -146,15 +146,11 @@ def summarize_all_news_articles(prompt, function):
     return summaries
 
 
-
-
-
 def combine_all_articles(prompt_to_combine, final_prompt, combine_stock_news):
     print('Prompts to combine: ', prompt_to_combine)
     print('Final prompt: ', final_prompt)
     response = gemini_chat.send_message(prompt_to_combine + str(combine_stock_news) + final_prompt + "Summaries are: " + ''.join(summaries))
     return response.text
-    # return {current_ticker:json.loads(response.text)}
 
 
 news_articles_prompt = "You are stock news analyzer. Store key content of the news that impacts profit and loss of the company, Strengths, weaknesses, opportunities, threats."
@@ -164,7 +160,7 @@ summaries = summarize_all_news_articles(news_articles_prompt, news_article_summa
 file_name = "gemini_combined_summaries_expert.json"
 prompt_to_combine = "Based on the list of summaries of articles content you have in a json format article, combine and summarize the news articles in a json format. Do not miss any key information that is useful for the user to decide stock performance."
 final_summary = combine_all_articles(prompt_to_combine, final_prompt, combine_stock_news)
-print('\n\nFINAL SUMMARY: \n\n', final_summary)
+
 with open(file_name, "w") as file:
     file.write(final_summary)
 
@@ -231,4 +227,55 @@ def test_sentiment_analysis():
 # plt.xlabel("Predicted")
 # plt.ylabel("Actual")
 # plt.title("Confusion Matrix")
+# plt.show()
+
+
+def summarize_single_article(prompt, function, content):
+    start_time = time.time()
+    summary = []
+    print("Summarized one news article.")
+    try:
+        response = gemini_chat.send_message("You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information." + prompt + content)
+        output = response.text
+        print('\n\nOutput: ', output)
+        summary.append(output)
+    except:
+        print ("Incorrect JSON format returned.")
+        time.sleep(10)
+    end_time = time.time()
+    print('Time: ', end_time - start_time)
+    return summary, end_time - start_time
+
+
+
+news_articles_prompt = "You are stock news analyzer. Store key content of the news that impacts profit and loss of the company, Strengths, weaknesses, opportunities, threats."
+times = []
+content_lengthss = []
+for company in data["companies"]:
+   print("Name:", company["name"])
+   for article in company["articles"]:
+      print("Date:", article["date"])
+      print("URL:", article["url"])
+      print("Content:", len(article["content"]))
+      _, time_taken = summarize_single_article(news_articles_prompt, news_article_summarizer_function, article["content"])
+      print(time_taken)
+      content_lengthss.append(len(article["content"]))
+      times.append(time_taken)
+
+
+# Plot of latency for gemini-pro individual news article summaries
+# import matplotlib.pyplot as plt
+
+# content_length = [3793, 9028, 1244, 2919, 1097, 5527, 288, 2730, 5707, 686, 2049, 2861, 3604, 2732, 2796, 5328, 2737, 2510, 2802, 2591, 2976, 2733, 2760, 4464, 1033, 2714, 2715, 1703, 1696, 1269]
+# times = [3.651094913482666, 4.908170938491821, 7.154149770736694, 6.8840248584747314, 5.951460123062134, 7.4626381397247314, 7.370919942855835, 10.1405508518219, 9.747560024261475, 6.842607736587524, 8.950924158096313, 8.046592950820923, 9.11188793182373, 11.591891765594482, 12.061607122421265, 12.031057834625244, 11.506290912628174, 11.960825681686401, 14.00536298751831, 13.98695993423462, 14.543370008468628, 14.43639087677002, 13.115972757339478, 14.687117099761963, 13.054604053497314, 10.724524974822998, 10.744472742080688, 10.755383968353271, 10.547285079956055, 10.545813083648682]
+# print(len(content_length))
+# print(len(times))
+# # Plotting the graph
+# plt.figure(figsize=(12, 6))
+# plt.scatter(content_length, times, color='green', label='Times')
+# plt.xlabel('Content Length')
+# plt.ylabel('Times')
+# plt.title('Content Length vs. Times')
+# plt.legend()
+# plt.grid(True)
 # plt.show()
